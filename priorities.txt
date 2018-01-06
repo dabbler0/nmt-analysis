@@ -1,0 +1,7 @@
+QUESTIONS TO ASK:
+    - How good is the parenthesis neuron at detecting parentheses? Classification task.
+    - How good is the NP boundary neuron at detecting NP boundaries? Classification task.
+        - Run conditional variance, etc. on this as well
+    - Where do these neurons rank in the various shared-information rankings?
+    - How do the position-neuron rankings rank in the various shared-information rankings?
+    - Is shared information actually important?

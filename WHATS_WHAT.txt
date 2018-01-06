@@ -1,0 +1,7 @@
+File                                Purpose
+best_correlations.py                Find best-correlated individual neurons
+most_predictabl.py                  Find neurons most explainable by linear regression
+cca.py                              Perform CCA between various representations
+match_expectation.py                Find which neurons' variances are best explained by a given tagging task
+tagging_capacity.py                 Find which neurons are best at doing a given tagging task
+tokenize-un.py                      Tokenize the dataset
