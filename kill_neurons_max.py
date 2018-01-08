@@ -5,10 +5,6 @@ import h5py
 import json
 import nltk
 
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-
 lang = 'es'
 version = 1
 model_name = 'en-%s-2m-%d' % (lang, version)
@@ -31,13 +27,12 @@ def test(projection_matrix, label):
     with open(projection_file, 'w') as pf:
         json.dump(projection_matrix, pf)
 
-    tmp_file_name = '/home/anthony/sls/src/tmp-linear/%s-%s-output.txt' % (model_name, label)
+    tmp_file_name = '/home/anthony/sls/src/tmp-max/%s-%s-output.txt' % (model_name, label)
 
     language = model_name[3:5]
     true_file_name = '/home/anthony/sls/data/testsets/tokenized-test/%s.tok' % language
 
     # Run the tests
-    '''
     subprocess.call(
         [   '/home/anthony/torch/install/bin/th',
             '/home/anthony/sls/seq2seq-attn/evaluate.lua',
@@ -52,7 +47,6 @@ def test(projection_matrix, label):
         ],
         cwd = '/home/anthony/sls/seq2seq-attn/'
     )
-    '''
 
     # Compute a BLEU score of the results.
     average_bleu_score = 0
@@ -99,5 +93,4 @@ for threshold in [50 * x for x in range(1, 11)]:
 # END TEST
 # ========
 
-with open('results/max-bleu-score-%s.json' % network, 'w') as f:
-    json.dump((top_bleu_scores, bottom_bleu_scores), f)
+json.dump((top_bleu_scores, bottom_bleu_scores), 'results/max-bleu-score-%s.json' % network)
